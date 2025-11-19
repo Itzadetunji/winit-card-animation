@@ -16,12 +16,35 @@ export const App: React.FC = () => {
 			{ x: 5, duration: 0.8, ease: "sine.inOut" }
 		);
 
-		const glowBar = gsap.timeline({ repeat: -1, yoyo: true, repeatDelay: 0.5 });
+		const glowBar = gsap.timeline({
+			repeat: -1,
+			yoyo: true,
+			repeatDelay: 0.125,
+			delay: 1,
+		});
 
 		glowBar.fromTo(
 			"#glow-bar",
-			{ opacity: 0.1, scaleY: 1.3 },
+			{ opacity: 0, scaleY: 1.3 },
 			{ opacity: 1, scaleY: 1, duration: 2, ease: "sine.inOut" }
+		);
+
+		const earth = gsap.timeline({
+			repeat: -1,
+			yoyo: true,
+			repeatDelay: 0.5,
+			delay: 0.5,
+		});
+
+		earth.fromTo(
+			"#earth",
+			{ scale: 1, filter: "contrast(100%)" },
+			{
+				scale: 1.02,
+				duration: 1.5,
+				ease: "sine.inOut",
+				filter: "contrast(150%)",
+			}
 		);
 	}, []);
 
@@ -29,18 +52,18 @@ export const App: React.FC = () => {
 		<main className="h-dvh w-screen bg-black flex flex-col relative overflow-x-hidden">
 			<img
 				src="/glow-bar.svg"
-				className="fixed bottom-0"
+				className="fixed bottom-0 left-0"
 				id="glow-bar"
 				alt=""
 			/>
 			<img
-				src="/glow-bar.svg"
-				className="fixed bottom-0"
+				src="/earth.png"
+				className="fixed bottom-0 right-0 size-200"
 				id="earth"
 				alt=""
 			/>
 			<div className="flex-1 relative flex flex-col max-md:px-4 px-20 pt-8.5 pb-22.5 lg:justify-between items-stretch">
-				<nav className="flex items-center gap-10 justify-between">
+				<nav className="flex items-center gap-10 justify-between max-w-360 self-center w-full">
 					<img
 						src="/logo.svg"
 						alt=""
@@ -94,6 +117,23 @@ export const App: React.FC = () => {
 					<Partners />
 				</div>
 			</div>
+			<p className="fixed bottom-4 text-white text-xs left-1/2 -translate-x-1/2 text-center">
+				Code:{" "}
+				<a
+					className="underline"
+					href="https://x.com/itzadetunji1"
+				>
+					Adetunji Adeyinka
+				</a>{" "}
+				<br />
+				Design:{" "}
+				<a
+					className="underline"
+					href="https://x.com/nerooeth"
+				>
+					Nero
+				</a>
+			</p>
 		</main>
 	);
 };
