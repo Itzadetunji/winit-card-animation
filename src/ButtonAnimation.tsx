@@ -53,7 +53,7 @@ export const ButtonAnimation = () => {
 
 	return (
 		<button
-			className="flex items-center bg-[#ff3c00] rounded-full gap-4 pl-6 pr-14.5 relative h-11 cursor-pointer"
+			className="flex items-center bg-[#ff3c00] rounded-full gap-4 pl-6 pr-14.5 relative h-11 cursor-pointer z-20"
 			type="button"
 			ref={buttonRef}
 		>
